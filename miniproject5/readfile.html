@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Read File</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+      #result {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Press button to read file</p>
+      <input type="button" id="readfileBtn" class="btn btn-primary" value="Read File">
+      <div id="result">List of names will appear here.</div>
+    </div>
+
+    <script src="Util.js"></script>
+    <script>
+      Util.addLis(Util.getEl('#readfileBtn')[0], 'click', function(){
+        Util.sendRequest('readfile.php', function(res){
+          Util.getEl('#result')[0].innerHTML = res.responseText;
+        });
+      });
+    </script>
+  </body>
+</html>
